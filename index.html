@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="портфолио Марии Левиной на Яндекс.Практикуме">
     <meta name="author" content="Мария Левина">
@@ -11,39 +11,57 @@
 </head>
 <body>
     <div class="page">
-        <header class="header"></header>
+        <header class="header">
+            <img class="header__logo" src="/images/logo.svg" alt="Логотип Место">
+        </header>
         <main class="main">
             <section class="profile">
-
+                <div class="profile__content">
+                    <img class="profile__image" src="images/avatar.jpg" alt="Аватар">
+                    <div class="profile__info">
+                        <h2 class="profile__author">Жак-Ив Кусто</h2>
+                        <p class="profile__author-subline">Исследователь океана</p>
+                        <button class="profile__change" type="button"></button>
+                    </div>
+                    <button class="profile__add-button" type="button"></button>
+                </div>
             </section>
             <section class="elements">
                 <div class="element">
                     <img class="element__image" src="images/1.JPG" alt="Волынщик в Лондоне. Фотограф Ника Горошко">
                     <p class="element__caption">Волынщик в Лондоне</p>
+                    <button class="element__like-button"></button>
                 </div>
                 <div class="element">
                     <img class="element__image" src="images/2.JPG" alt="Гондольер в Венеции. Фотограф Ника Горошко">
                     <p class="element__caption">Гондольер в Венеции</p>
+                    <button class="element__like-button"></button>
                 </div>
                 <div class="element">
                     <img class="element__image" src="images/3.HEIC" alt="Рыбацкая деревня. Рязань. Фотограф Ника Горошко">
-                    <p class="element__caption">Рыбацкая деревня. Рязань</p>
+                    <p class="element__caption">Рыбацкая деревня</p>
+                    <button class="element__like-button"></button>
                 </div>
                 <div class="element">
                     <img class="element__image" src="images/5.JPG" alt="Городок Бат. Великобритания. Фотограф Ника Горошко">
-                    <p class="element__caption">г. Бат. Великобритания</p>
+                    <p class="element__caption">город Бат</p>
+                    <button class="element__like-button"></button>
                 </div>
                 <div class="element">
                     <img class="element" src="images/4.JPG" alt="Остров Сими. Греция. Фотограф Ника Горошко">
-                    <p class="element__caption">Остров Сими. Греция</p>
+                    <p class="element__caption">Остров Сими</p>
+                    <button class="element__like-button"></button>
                 </div>
                 <div class="element">
                     <img class="element" src="images/6.JPG" alt="Девятиарочный мост. Шри-Ланка. Фотограф Ника Горошко">
-                    <p class="element__caption">Девятиарочный мост. Шри-Ланка</p>
+                    <p class="element__caption">Девятиарочный мост</p>
+                    <button class="element__like-button"></button>
                 </div>
             </section>
         </main>
-        <footer class="footer"></footer>
+        <footer class="footer">
+            <p class="footer__caption">&copy;2020 Mesto Russia</p>
+        </footer>
     </div>
 </body>
 </html>
