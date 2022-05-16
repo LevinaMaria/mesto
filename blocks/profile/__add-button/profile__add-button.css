@@ -1,0 +1,14 @@
+.profile__add-button{
+    grid-template-columns: 3, 4;
+    grid-template-rows: 1, 3;
+    width: 150px;
+    min-height: 50px;
+    background-image: url(../../../images/add.svg);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    cursor: pointer;
+}

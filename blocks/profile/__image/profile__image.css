@@ -1,0 +1,8 @@
+.profile__image{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    grid-template-columns: 1, 2;
+    grid-template-rows: 1, 3;
+}

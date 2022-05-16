@@ -1,0 +1,9 @@
+.profile__change{
+    width: 24px;
+    height: 24px;
+    background-image: url(../../../images/change.svg);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+}
