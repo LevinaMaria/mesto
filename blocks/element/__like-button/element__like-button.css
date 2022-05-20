@@ -1,10 +1,10 @@
-.element__like-button{
-    background-image: url(../../../images/like.svg);
-    width: 22px;
-    height: 19px;
-    object-fit: cover;
-    border: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
+.element__like-button {
+  background-image: url(../../../images/like.svg);
+  width: 22px;
+  height: 19px;
+  object-fit: cover;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }
