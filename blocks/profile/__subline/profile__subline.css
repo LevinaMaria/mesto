@@ -6,3 +6,11 @@
   line-height: 22px;
   justify-content: start;
 }
+
+@media screen and (max-width: 560px) {
+  .profile__subline {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+}

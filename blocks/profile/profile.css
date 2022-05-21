@@ -4,8 +4,16 @@
   grid-template-rows: repeat(2, 60px);
   margin: 0 auto;
   padding: 40px 0 51px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   max-width: 880px;
   justify-content: center;
   /* align-items: center; */
+}
+
+@media screen and (max-width: 850px) {
+  .profile {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    padding: 42px 0 0;
+  }
 }

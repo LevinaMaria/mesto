@@ -6,7 +6,17 @@
   grid-template-rows: auto;
   row-gap: 16px;
   column-gap: 18px;
-  width: 336px;
+  max-width: 336px;
   height: 73px;
-  padding-top: 22px;
+  margin: 22px auto 0;
+}
+
+@media screen and (max-width: 560px) {
+  .profile__info {
+    grid-template-columns: 194px 1fr;
+    row-gap: 14px;
+    max-width: 282px;
+    height: 54px;
+    column-gap: 10px;
+  }
 }

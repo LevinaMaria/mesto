@@ -5,3 +5,11 @@
   margin: 0;
   text-align: start;
 }
+
+@media screen and (max-width: 560px) {
+  .profile__author {
+    font-size: 27px;
+    line-height: 33px;
+    text-align: center;
+  }
+}

@@ -11,3 +11,6 @@
   padding: 0;
   cursor: pointer;
 }
+.popup__submit-button:hover {
+  opacity: 0.6;
+}
