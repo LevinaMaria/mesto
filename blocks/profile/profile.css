@@ -10,7 +10,7 @@
   /* align-items: center; */
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 880px) {
   .profile {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
