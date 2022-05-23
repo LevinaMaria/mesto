@@ -13,6 +13,6 @@
   .profile__author {
     font-size: 27px;
     line-height: 33px;
-    text-align: center;
+    text-align: end;
   }
 }

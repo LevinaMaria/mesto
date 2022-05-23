@@ -9,5 +9,6 @@
   .footer__caption {
     font-size: 14px;
     line-height: 17px;
+    padding: 0 19px;
   }
 }
