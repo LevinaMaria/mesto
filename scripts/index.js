@@ -2,7 +2,7 @@ const profile = document.querySelector(".profile");
 const popup = document.querySelector(".popup");
 // определить кнопку открытия попап
 const openPopupButton = document.querySelector(
-  ".profile__change-button_open-popup"
+  ".profile__change-button"
 );
 // определить кнопку закрытия попап
 const closePopupButton = popup.querySelector(".popup__close-button");

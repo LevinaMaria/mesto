@@ -7,12 +7,18 @@
   row-gap: 16px;
   column-gap: 18px;
   max-width: 336px;
+<<<<<<< HEAD
   height: 73px;
   padding-top: 22px;
   margin: 0;
+=======
+  min-height: 73px;
+  margin: 22px auto 0;
+>>>>>>> hotfix
 }
 @media screen and (max-width: 880px) {
   .profile__info {
+<<<<<<< HEAD
     margin: 0 auto;
   }
   @media screen and (max-width: 560px) {
@@ -23,5 +29,12 @@
       height: 54px;
       column-gap: 10px;
     }
+=======
+    grid-template-columns: 194px 1fr;
+    row-gap: 14px;
+    max-width: 282px;
+    min-height: 54px;
+    column-gap: 10px;
+>>>>>>> hotfix
   }
 }

@@ -4,3 +4,9 @@
   padding-top: 54px;
   margin: 0;
 }
+
+@media screen and (max-width: 450px) {
+  .popup__edit-profile{
+    padding-top: 75px;
+  }
+}
