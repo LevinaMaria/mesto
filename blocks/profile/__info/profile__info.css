@@ -16,6 +16,10 @@
     max-width: 282px;
     min-height: 54px;
     column-gap: 10px;
+<<<<<<< HEAD
     margin: 22px auto 0 65px;
+=======
+    margin: 22px auto 0;
+>>>>>>> hotfix
   }
 }
