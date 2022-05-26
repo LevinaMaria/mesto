@@ -27,6 +27,7 @@
             <section class="elements">
                 <div class="element">
                     <img class="element__image" src="images/1.JPG" alt="Волынщик в Лондоне. Фотограф Ника Горошко">
+                    <button class="element__trash-button" type="button"></button>
                     <div class="element__description">
                         <h2 class="element__caption">Лондон</h2>
                         <button class="element__like-button" type="button"></button>
@@ -72,7 +73,7 @@
         <footer class="footer">
             <p class="footer__caption">&copy;2020 Mesto Russia</p>
         </footer>
-        <section class="popup">
+        <section class="popup popup-change">
             <div class="popup__container">
                 <button class="popup__close-button" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
@@ -81,6 +82,22 @@
                     <input class="popup__item" type="text" name="subline" placeholder="О себе">
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
+            </div>
+        </section>
+        <section class="popup popup-edit">
+            <div class="popup__container">
+                <button class="popup__close-button" type="button"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <form class="popup__edit-profile" name="edit-profile">
+                    <input class="popup__item" type="text" name="image-name" placeholder="Название">
+                    <input class="popup__item" type="text" name="url" placeholder="Ссылка на картинку">
+                    <button class="popup__submit-button" type="submit">Создать</button>
+                </form>
+            </div>
+        </section>
+        <section class="popup popup-image-wiev">
+            <div class="popup__container">
+                <button class="popup__close-button" type="button"></button>
             </div>
         </section>
     </div>

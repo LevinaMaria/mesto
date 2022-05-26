@@ -15,6 +15,34 @@ const sublineInput = document.querySelector(".popup__item:nth-of-type(2)");
 // найти значения автор и О себе в профиле
 const profileAuthor = document.querySelector(".profile__author");
 const profileSubline = document.querySelector(".profile__subline");
+// шесть карточек из коробки
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
 // назначить переключатель открытия и закрытия попап и заполнения попап при открытии данными из профиля
 function togglePopup() {
    if (popup.classList.contains("popup_opened")){
