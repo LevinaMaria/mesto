@@ -9,7 +9,7 @@
   overflow: hidden;
   max-width: 295px;
   z-index: 10;
-  margin-bottom: -8px;
+  margin-bottom: -9px;
 }
 
 @media screen and (max-width: 560px) {
