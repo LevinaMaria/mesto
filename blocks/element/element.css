@@ -6,6 +6,7 @@
   overflow: hidden;
   color: #000000;
   position: relative;
+  list-style-type: none;
 }
 
 @media screen and (max-width: 1024px) {
