@@ -68,7 +68,7 @@ function renderCard(name, link) { //функция передачи данных
   cardImage.addEventListener('click', () => { // слушатель события клика на картинку
     popupViewImage.classList.toggle("popup_opened"); // открытие попапа по клику на картинку (3)
     let imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
-    let imageViewTitle = popupViewImage.querySelector(".popup__view-image-title"); // подпись картинки в попакпе (3)
+    let imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
     imageView.src = link;
     imageView.alt = name;
     imageViewTitle.textContent = name;
