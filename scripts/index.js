@@ -125,8 +125,10 @@ function cardSubmitHandler(evt) {
 openAuthorPopupBtn.addEventListener("click", openedProfile);
 
 openCardPopupBtn.addEventListener("click", () => {
+  popupImgName.value = null;
+  popupImgUrl.value = null;
   togglePopup(popupEditCard);
-});
+ });
 
 editProfile.addEventListener("submit", formSubmitHandler);
 editCard.addEventListener("submit", cardSubmitHandler);
