@@ -1,28 +1,28 @@
 // шесть карточек из коробки
 const initialCards = [
   {
-    name: 'Шри-Ланка',
-    link: 'images/6.JPG'
-  },
-  {
-    name: 'о. Сими',
-    link: 'images/4.JPG'
-  },
-  {
     name: 'Лондон',
     link: 'images/1.JPG'
-  },
-  {
-    name: 'Крым',
-    link: 'images/3.JPG'
   },
   {
     name: 'Венеция',
     link: 'images/2.JPG'
   },
   {
+    name: 'о. Сими',
+    link: 'images/4.JPG'
+  },
+  {
+    name: 'Крым',
+    link: 'images/3.JPG'
+  },
+  {
     name: 'Бат',
     link: 'images/5.JPG'
+  },
+  {
+    name: 'Шри-Ланка',
+    link: 'images/6.JPG'
   }
 ];
 
@@ -43,13 +43,13 @@ const profileAuthor = profile.querySelector(".profile__author"); // первон
 const profileSubline = profile.querySelector(".profile__subline"); // первоначальное значение подписи в профиле (1)
 const popupImgUrl = popupEditCard.querySelector('.popup__item_image-url'); // ссылка картинки в карточке (2)
 const popupImgName = popupEditCard.querySelector('.popup__item_image-name'); // имя картинки в карточке (2)
-const cardsElements = page.querySelector('.elements'); // все карточки с картинками (2)
+const Elements = page.querySelector('.elements'); // все карточки с картинками (2)
 const templateElement = page.querySelector('.element-template').content; // привязать темплейт к карточке (2)
 
 function renderCard(name, link) { //функция передачи данных карточке
   const cardElement = templateElement.cloneNode(true); // клонируем темплейт
-  let cardCaption = cardElement.querySelector('.element__caption');
-  let cardImage = cardElement.querySelector('.element__image');
+  let cardCaption = cardElement.querySelector('.element__caption'); // данные подписи картинки
+  let cardImage = cardElement.querySelector('.element__image'); // данные картинки
   cardCaption.textContent = name;
   cardImage.src = link;
   cardImage.alt = name;
@@ -72,37 +72,36 @@ function renderCard(name, link) { //функция передачи данных
     imageView.src = link;
     imageView.alt = name;
     imageViewTitle.textContent = name;
-  })
+  });
 
-  cardsElements.append(cardElement);
+  Elements.prepend(cardElement);
 };
 
-// передать данные карточек из констант
-initialCards.reverse().forEach(item => {
+initialCards.reverse().forEach(item => { // данные карточек из констант
   let name = item.name;
   let link = item.link;
 
   renderCard(name, link);
 });
 
-closePopupButtons.forEach( item => {
+closePopupButtons.forEach( item => { // поиск всех кнопок закрытия
   item.addEventListener ('click', (evt) => {
     const eventTarget = evt.target;
     const closePopupButton = eventTarget.closest('.popup');
 
-    toggleForm(closePopupButton);
+    togglePopup(closePopupButton);
   });
 });
 
-function toggleForm(element) {
+function togglePopup(element) { // функция открытия-закрытия попапа
   element.classList.toggle("popup_opened");
 };
 
-function openedProfile () {
+function openedProfile () { // заполняет окошки формы первоначальными данными из профиля
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
 
-  toggleForm(popupEditAuthor);
+  togglePopup(popupEditAuthor);
 };
 
 function formSubmitHandler (evt) { // назначить функцию отправки формы автора
@@ -110,7 +109,7 @@ function formSubmitHandler (evt) { // назначить функцию отпр
   profileAuthor.textContent = nameInput.value;
   profileSubline.textContent = sublineInput.value;
   
-  toggleForm(popupEditAuthor);
+  togglePopup(popupEditAuthor);
 };
 
 function cardSubmitHandler (evt) { // добавить функцию заполнения карточки пользователем
@@ -119,13 +118,13 @@ function cardSubmitHandler (evt) { // добавить функцию запол
   let newPopupImgUrl = popupImgUrl.value;
   renderCard(newPopupImgName, newPopupImgUrl);
 
-  toggleForm(popupEditCard);
+  togglePopup(popupEditCard);
 };
 
-openAuthorPopupBtn.addEventListener('submit', formSubmitHandler);
+openAuthorPopupBtn.addEventListener('click', openedProfile);
 
 openCardPopupBtn.addEventListener('click', () => {
-  toggleForm(popupEditCard);
+  togglePopup(popupEditCard);
 });
 
 editProfile.addEventListener('submit', formSubmitHandler);
