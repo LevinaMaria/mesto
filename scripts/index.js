@@ -61,7 +61,7 @@ function renderCard(name, link) { //функция передачи данных
 
   let deleteCard = cardElement.querySelector(".element__trash-button"); // кнопка удаления карточки
   deleteCard.addEventListener('click', () => {
-    let deletedEelement = deletedEelement.closest(".element"); // назначить выбор удаляемой карточки
+    let deletedEelement = deleteCard.closest(".element"); // назначить выбор удаляемой карточки
     deletedEelement.remove(); // удалить карточку
   });
 
@@ -105,8 +105,7 @@ function openedProfile () {
   toggleForm(popupEditAuthor);
 };
 
-// назначить функцию отправки формы автора
-function formSubmitHandler (evt) {
+function formSubmitHandler (evt) { // назначить функцию отправки формы автора
   evt.preventDefault();
   profileAuthor.textContent = nameInput.value;
   profileSubline.textContent = sublineInput.value;
@@ -114,8 +113,7 @@ function formSubmitHandler (evt) {
   toggleForm(popupEditAuthor);
 };
 
-// добавить функцию заполнения карточки пользователем
-function cardSubmitHandler (evt) {
+function cardSubmitHandler (evt) { // добавить функцию заполнения карточки пользователем
   evt.preventDefault();
   let newPopupImgName = popupImgName.value;
   let newPopupImgUrl = popupImgUrl.value;
@@ -124,7 +122,10 @@ function cardSubmitHandler (evt) {
   toggleForm(popupEditCard);
 };
 
+openAuthorPopupBtn.addEventListener('submit', formSubmitHandler);
 
-
+openCardPopupBtn.addEventListener('click', () => {
+  toggleForm(popupEditCard);
+});
 
 editProfile.addEventListener('submit', formSubmitHandler);
