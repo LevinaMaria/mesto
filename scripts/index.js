@@ -10,12 +10,12 @@ const closePopupButtons = page.querySelectorAll(".popup__close-button"); // кн
 // const submitButton = page.querySelectorAll(".popup__submit-button"); // кнопка сохранения данных в форму (в любом окне)
 const formProfile = popupEditAuthor.querySelector(".popup__edit-profile"); // форма редактирования профиля (1)
 const formCard = popupEditCard.querySelector(".popup__edit-card"); // форма редактирования карточки (2)
-const nameInput = popupEditAuthor.querySelector(".popup__item:first-child"); // поле редактирования имени (1)
-const sublineInput = popupEditAuthor.querySelector(".popup__item:nth-of-type(2)"); // поле редактирования подписи (1)
+const nameInput = popupEditAuthor.querySelector(".item_name"); // поле редактирования имени (1)
+const sublineInput = popupEditAuthor.querySelector(".item_subline"); // поле редактирования подписи (1)
 const profileAuthor = profile.querySelector(".profile__author"); // первоначальное значение имени в профиле (1)
 const profileSubline = profile.querySelector(".profile__subline"); // первоначальное значение подписи в профиле (1)
-const popupImgName = popupEditCard.querySelector(".popup__item:first-child"); // имя картинки в карточке (2)
-const popupImgUrl = popupEditCard.querySelector(".popup__item:nth-of-type(2)"); // ссылка картинки в карточке (2)
+const popupImgName = popupEditCard.querySelector(".item_img-name"); // имя картинки в карточке (2)
+const popupImgUrl = popupEditCard.querySelector(".item_img-url"); // ссылка картинки в карточке (2)
 const Elements = page.querySelector(".elements"); // все карточки с картинками (2)
 const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
 //функция передачи данных карточке
@@ -28,10 +28,13 @@ function renderCard(name, link) {
   cardImage.alt = name;
 
   const likeImage = cardElement.querySelector(".element__like-button"); // кнопка лайк в карточке
-  likeImage.addEventListener("click", () => {
-    likeImage.classList.toggle("element__like-button_active"); // назначить слушатель события нажатия кнопки лайк и присвоения по клику класса "Актив"
-  });
 
+  function listenLikeImage() {
+    likeImage.classList.toggle("element__like-button_active");
+  };
+  likeImage.addEventListener("click", listenLikeImage);
+     // назначить слушатель события нажатия кнопки лайк и присвоения по клику класса "Актив"
+  
   const deleteCardBtn = cardElement.querySelector(".element__trash-button"); // кнопка удаления карточки
   deleteCardBtn.addEventListener("click", () => {
     const deletedEelement = deleteCardBtn.closest(".element"); // назначить выбор удаляемой карточки
