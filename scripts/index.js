@@ -1,6 +1,6 @@
 const page = document.querySelector(".page"); //страница
 const profile = page.querySelector(".profile"); // профиль (секция с именем и данными пользователя)
-// const popup = page.querySelector(".popup"); // все модальные окна
+const popup = page.querySelector(".popup"); // все модальные окна
 const popupEditAuthor = page.querySelector(".popup-edit-author"); // попап редактирования профиля (1)
 const popupEditCard = page.querySelector(".popup-edit-card"); // попап добавления карточки (2)
 const popupViewImage = page.querySelector(".popup-view-image"); // попап просмотра картинки (3)
@@ -16,10 +16,18 @@ const profileAuthor = profile.querySelector(".profile__author"); // первон
 const profileSubline = profile.querySelector(".profile__subline"); // первоначальное значение подписи в профиле (1)
 const popupImgName = popupEditCard.querySelector(".item_img-name"); // имя картинки в карточке (2)
 const popupImgUrl = popupEditCard.querySelector(".item_img-url"); // ссылка картинки в карточке (2)
-const Elements = page.querySelector(".elements"); // все карточки с картинками (2)
+const elements = page.querySelector(".elements"); // все карточки с картинками (2)
 const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
+// функция открытия попапа
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+};
+// функция закрытия попапа
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+};
 //функция передачи данных карточке
-function renderCard(name, link) { 
+function createCard(name, link) { 
   const cardElement = templateElement.cloneNode(true); // клонируем темплейт
   const cardCaption = cardElement.querySelector(".element__caption"); // данные подписи картинки
   const cardImage = cardElement.querySelector(".element__image"); // данные картинки
@@ -28,7 +36,7 @@ function renderCard(name, link) {
   cardImage.alt = name;
 
   const likeImage = cardElement.querySelector(".element__like-button"); // кнопка лайк в карточке
-
+  
   function listenLikeImage() {
     likeImage.classList.toggle("element__like-button_active");
   };
@@ -42,7 +50,7 @@ function renderCard(name, link) {
   });
 // слушатель события клика на картинку
   cardImage.addEventListener("click", () => {
-    popupViewImage.classList.toggle("popup_opened"); // открытие попапа по клику на картинку (3)
+    openPopup(popupViewImage);// открытие попапа по клику на картинку (3)
     const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
     const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
     imageView.src = link;
@@ -50,34 +58,35 @@ function renderCard(name, link) {
     imageViewTitle.textContent = name;
   });
 
-  Elements.prepend(cardElement);
+  return cardElement;
 }
+function renderCard(name, link) {
+  elements.prepend(createCard(name, link));
+};
+
 // данные карточек из констант
 initialCards.forEach((item) => {
   const name = item.name;
   const link = item.link;
-
   renderCard(name, link);
 });
+
 // поиск всех кнопок закрытия
 closePopupButtons.forEach((item) => {
   item.addEventListener("click", (evt) => {
     const eventTarget = evt.target;
     const closePopupButton = eventTarget.closest(".popup");
 
-    togglePopup(closePopupButton);
+    closePopup(closePopupButton);
   });
 });
-// функция переключения видимости попапа
-function togglePopup(element) {
-  element.classList.toggle("popup_opened");
-}
+
 // заполняет окошки формы первоначальными данными из профиля
 function openedProfile() {
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
 
-  togglePopup(popupEditAuthor);
+  openPopup(popupEditAuthor);
 }
 // назначить функцию отправки формы автора
 function formSubmitHandler(evt) {
@@ -85,7 +94,7 @@ function formSubmitHandler(evt) {
   profileAuthor.textContent = nameInput.value;
   profileSubline.textContent = sublineInput.value;
 
-  togglePopup(popupEditAuthor);
+  closePopup(popupEditAuthor);
 }
 // добавить функцию заполнения карточки пользователем
 function cardSubmitHandler(evt) {
@@ -94,15 +103,21 @@ function cardSubmitHandler(evt) {
   const newImgUrl = popupImgUrl.value;
   renderCard(newImgName, newImgUrl);
 
-  togglePopup(popupEditCard);
+  closePopup(popupEditCard);
 }
 
 openAuthorPopupBtn.addEventListener("click", openedProfile);
 
+// function openPopupCard() {
+//   popupImgName.value = null;
+//   popupImgUrl.value = null;
+//   openPopup(popupEditCard);
+// };
+
 openCardPopupBtn.addEventListener("click", () => {
   popupImgName.value = null;
   popupImgUrl.value = null;
-  togglePopup(popupEditCard);
+  openPopup(popupEditCard);
  });
 
 formProfile.addEventListener("submit", formSubmitHandler);
