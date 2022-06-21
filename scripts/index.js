@@ -18,6 +18,8 @@ const popupImgName = popupEditCard.querySelector(".item-img-name"); // имя к
 const popupImgUrl = popupEditCard.querySelector(".item-img-url"); // ссылка картинки в карточке (2)
 const elements = page.querySelector(".elements"); // все карточки с картинками (2)
 const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
+const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
+const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
 // функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -37,8 +39,8 @@ function createCard(name, link) {
 
   const likeImage = cardElement.querySelector(".element__like-button"); // кнопка лайк в карточке
   
-  function listenLikeImage() {
-    likeImage.classList.toggle("element__like-button_active");
+  function listenLikeImage(event) {
+    event.target.classList.toggle("element__like-button_active");
   };
   likeImage.addEventListener("click", listenLikeImage);
      // назначить слушатель события нажатия кнопки лайк и присвоения по клику класса "Актив"
@@ -51,8 +53,6 @@ function createCard(name, link) {
 // слушатель события клика на картинку
   cardImage.addEventListener("click", () => {
     openPopup(popupViewImage);// открытие попапа по клику на картинку (3)
-    const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
-    const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
     imageView.src = link;
     imageView.alt = name;
     imageViewTitle.textContent = name;
