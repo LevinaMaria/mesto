@@ -20,13 +20,23 @@ const elements = page.querySelector(".elements"); // все карточки с 
 const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
 const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
 const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
+
 // функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', escapePopup);
 };
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.addEventListener('keydown', escapePopup);
+};
+// работа escape
+const escapePopup = (evt) => {
+  if (evt.key === 'Escape') {
+   const exitPopup = document.querySelector('.popup__opened');
+    closePopup(exitPopup);
+  };
 };
 //функция передачи данных карточке
 function createCard(name, link) { 
