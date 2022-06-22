@@ -34,36 +34,9 @@ const setErrorEventListeners = (formElement) => {
   });
 };
 
-// function hideInputError (formElement,inputElement) {
-//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-//   console.log(errorElement)
-//   inputElement.classList.add("popup__item_invalid");
-//   errorElement.classList.add("popup__error_visible");
-//   errorElement.textContent = "";
-// }
-// const setErrorEventListeners = (formElement) => {
-//   const inputList = Array.from(formElement.querySelectorAll(".popup__item"));
-//   const buttonElement = formElement.querySelector(".popup__submit-button");
-//   toggleButtonState(inputList, buttonElement);
-//   inputList.forEach((inputElement) => {
-//     inputElement.addEventListener("input", () => {
-//       isValid(formElement, inputElement);
-//       toggleButtonState(inputList, buttonElement);
-//     });
-//   });
-// formElement.addEventListener('reset', () => hideInputError(ormElement,inputElement));
-// };
-
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
-  });
-};
-
-const resetForm = (formElement) => {
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement);
-  formElement.reset();
   });
 };
 
@@ -88,6 +61,23 @@ const enableValidation = () => {
 };
 
 //TODO: написать функцию предвалидации
+const resetForm = (formElement) => {
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, enableValidation());
+
+  });
+  formElement.reset();
+};
+
+const setError = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(".popup__item"));
+  const buttonElement = formElement.querySelector(".popup__submit-button");
+  toggleButtonState(inputList, buttonElement);
+    inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement);
+  })
+};
+
 enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__item',
@@ -95,4 +85,4 @@ enableValidation({
   inactiveButtonClass: 'popup__submit-button_hideInputError',
   inputErrorClass: 'popup__item_invalid',
   errorClass: 'popup__error_visible'
-}); //TODO: обьект передаем
+});

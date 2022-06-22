@@ -20,34 +20,16 @@ const elements = page.querySelector(".elements"); // все карточки с 
 const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
 const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
 const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
-
 // функция открытия попапа
 function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', escapePopup);
-  document.addEventListener('mousedown', closeOnClick);
-};
+  popup.classList.add("popup_opened");
+}
 // функция закрытия попапа
 function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', escapePopup);
-  document.removeEventListener('mousedown', closeOnClick);
-};
-// работа escape
-const escapePopup = (evt) => {
-  if (evt.key === 'Escape') {
-   const exitPopup = document.querySelector('.popup_opened');
-    closePopup(exitPopup);
-  };
-};
-const closeOnClick = (evt) => {
-  if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
-  };
-};
-
+  popup.classList.remove("popup_opened");
+}
 //функция передачи данных карточке
-function createCard(name, link) { 
+function createCard(name, link) {
   const cardElement = templateElement.cloneNode(true); // клонируем темплейт
   const cardCaption = cardElement.querySelector(".element__caption"); // данные подписи картинки
   const cardImage = cardElement.querySelector(".element__image"); // данные картинки
@@ -56,21 +38,21 @@ function createCard(name, link) {
   cardImage.alt = name;
 
   const likeImage = cardElement.querySelector(".element__like-button"); // кнопка лайк в карточке
-  
+
   function listenLikeImage(event) {
     event.target.classList.toggle("element__like-button_active");
-  };
+  }
   likeImage.addEventListener("click", listenLikeImage);
-     // назначить слушатель события нажатия кнопки лайк и присвоения по клику класса "Актив"
-  
+  // назначить слушатель события нажатия кнопки лайк и присвоения по клику класса "Актив"
+
   const deleteCardBtn = cardElement.querySelector(".element__trash-button"); // кнопка удаления карточки
   deleteCardBtn.addEventListener("click", () => {
     const deletedEelement = deleteCardBtn.closest(".element"); // назначить выбор удаляемой карточки
     deletedEelement.remove(); // удалить карточку
   });
-// слушатель события клика на картинку
+  // слушатель события клика на картинку
   cardImage.addEventListener("click", () => {
-    openPopup(popupViewImage);// открытие попапа по клику на картинку (3)
+    openPopup(popupViewImage); // открытие попапа по клику на картинку (3)
     imageView.src = link;
     imageView.alt = name;
     imageViewTitle.textContent = name;
@@ -80,7 +62,7 @@ function createCard(name, link) {
 }
 function renderCard(name, link) {
   elements.prepend(createCard(name, link));
-};
+}
 
 // данные карточек из констант
 initialCards.forEach((item) => {
@@ -103,7 +85,7 @@ closePopupButtons.forEach((item) => {
 function openedProfile() {
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
-
+  setError(popupEditAuthor);
   openPopup(popupEditAuthor);
 }
 // назначить функцию отправки формы автора
@@ -112,7 +94,6 @@ function formSubmitHandler(evt) {
   profileAuthor.textContent = nameInput.value;
   profileSubline.textContent = sublineInput.value;
 
-  formProfile.reset();
   closePopup(popupEditAuthor);
 }
 // добавить функцию заполнения карточки пользователем
@@ -122,7 +103,6 @@ function cardSubmitHandler(evt) {
   const newImgUrl = popupImgUrl.value;
   renderCard(newImgName, newImgUrl);
 
-  formCard.reset();
   closePopup(popupEditCard);
 }
 
@@ -137,8 +117,9 @@ openAuthorPopupBtn.addEventListener("click", openedProfile);
 openCardPopupBtn.addEventListener("click", () => {
   popupImgName.value = null;
   popupImgUrl.value = null;
+  setError(popupEditCard);
   openPopup(popupEditCard);
- });
+});
 
 formProfile.addEventListener("submit", formSubmitHandler);
 formCard.addEventListener("submit", cardSubmitHandler);
