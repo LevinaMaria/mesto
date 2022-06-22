@@ -29,15 +29,16 @@ function openPopup(popup) {
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', escapePopup);
+  document.removeEventListener('keydown', escapePopup);
 };
 // работа escape
 const escapePopup = (evt) => {
   if (evt.key === 'Escape') {
-   const exitPopup = document.querySelector('.popup__opened');
+   const exitPopup = document.querySelector('.popup_opened');
     closePopup(exitPopup);
   };
 };
+
 //функция передачи данных карточке
 function createCard(name, link) { 
   const cardElement = templateElement.cloneNode(true); // клонируем темплейт

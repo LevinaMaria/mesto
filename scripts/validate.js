@@ -1,31 +1,32 @@
-const formElement = document.querySelectorAll(".popup__form");
-const inputElement = formElement.querySelectorAll(".popup__item");
+// const formElement = document.querySelector(".popup__form");
+// const inputElement = formElement.querySelector(".popup__item");
 
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMassege);
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
     hideInputError(formElement, inputElement);
   }
 };
 
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(".${inputElement.id}-error");
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-  inputElement.classlist.add("popup__item_invalid");
+  inputElement.classList.add("popup__item_invalid");
   errorElement.textContent = errorMessage;
-  errorElement.classlist.add("popup__error_visible");
+  errorElement.classList.add("popup__error_visible");
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classlist.add("popup__item_invalid");
-  errorElement.classlist.add("popup__error_visible");
+  console.log(errorElement)
+  inputElement.classList.add("popup__item_invalid");
+  errorElement.classList.add("popup__error_visible");
   errorElement.textContent = "";
 };
 
 const setErrorEventListeners = (formElement) => {
-  const inputList = Array.form(formElement.querySelectorAll(".popup__item"));
+  const inputList = Array.from(formElement.querySelectorAll(".popup__item"));
   const buttonElement = formElement.querySelector(".popup__submit-button");
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
@@ -44,14 +45,16 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classlist.add("popup__submit-button_disabled");
+    buttonElement.classList.add("popup__submit-button_disabled");
+    buttonElement.setAttribute('disabled', true);
   } else {
-    buttonElement.classlist.remove("popup__submit-button_disabled");
+    buttonElement.classList.remove("popup__submit-button_disabled");
+    buttonElement.removeAttribute('disabled');
   }
 };
 
 const enableValidation = () => {
-  const formList = Array.form(document.querySelectorAll(".popup__form"));
+  const formList = Array.from(document.querySelectorAll(".popup__form"));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
@@ -59,5 +62,5 @@ const enableValidation = () => {
     setErrorEventListeners(formElement);
   });
 };
-
-enableValidation(); //что вызываем в функции?
+//TODO: написать функцию предвалидации
+enableValidation(); //TODO: обьект передаем
