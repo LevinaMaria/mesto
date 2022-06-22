@@ -25,17 +25,24 @@ const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // �
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', escapePopup);
+  document.addEventListener('mousedown', closeOnClick);
 };
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', escapePopup);
+  document.removeEventListener('mousedown', closeOnClick);
 };
 // работа escape
 const escapePopup = (evt) => {
   if (evt.key === 'Escape') {
    const exitPopup = document.querySelector('.popup_opened');
     closePopup(exitPopup);
+  };
+};
+const closeOnClick = (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target);
   };
 };
 
@@ -105,6 +112,7 @@ function formSubmitHandler(evt) {
   profileAuthor.textContent = nameInput.value;
   profileSubline.textContent = sublineInput.value;
 
+  formProfile.reset();
   closePopup(popupEditAuthor);
 }
 // добавить функцию заполнения карточки пользователем
@@ -114,6 +122,7 @@ function cardSubmitHandler(evt) {
   const newImgUrl = popupImgUrl.value;
   renderCard(newImgName, newImgUrl);
 
+  formCard.reset();
   closePopup(popupEditCard);
 }
 
