@@ -23,11 +23,26 @@ const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // �
 // функция открытия попапа
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", escapePopup);
+  document.addEventListener("mousedown", closeOnClick);
 }
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", escapePopup);
+  document.removeEventListener("mousedown", closeOnClick);
 }
+const escapePopup = (evt) => {
+  if (evt.key === "Escape") {
+    const exitPopup = document.querySelector(".popup_opened");
+    closePopup(exitPopup);
+  }
+};
+const closeOnClick = (evt) => {
+  if (evt.target.classList.contains("popup")) {
+    closePopup(evt.target);
+  }
+};
 //функция передачи данных карточке
 function createCard(name, link) {
   const cardElement = templateElement.cloneNode(true); // клонируем темплейт
