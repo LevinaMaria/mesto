@@ -42,11 +42,11 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("popup__submit-button_hideInputError");
-    buttonElement.setAttribute('hideInputError', true);
+    buttonElement.classList.add("popup__submit-button_disabled");
+    buttonElement.setAttribute('disadled', true);
   } else {
-    buttonElement.classList.remove("popup__submit-button_hideInputError");
-    buttonElement.removeAttribute('hideInputError');
+    buttonElement.classList.remove("popup__submit-button_disabled");
+    buttonElement.removeAttribute('disabled');
   }
 };
 
