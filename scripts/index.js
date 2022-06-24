@@ -1,6 +1,6 @@
 const page = document.querySelector(".page"); //страница
 const profile = page.querySelector(".profile"); // профиль (секция с именем и данными пользователя)
-const popup = page.querySelector(".popup"); // все модальные окна
+const popups = page.querySelector(".popup"); // все модальные окна
 const popupEditAuthor = page.querySelector(".popup-edit-author"); // попап редактирования профиля (1)
 const popupEditCard = page.querySelector(".popup-edit-card"); // попап добавления карточки (2)
 const popupViewImage = page.querySelector(".popup-view-image"); // попап просмотра картинки (3)
@@ -107,6 +107,7 @@ function openEditProfileForm() {
   setError(popupEditAuthor);
   openPopup(popupEditAuthor);
 }
+
 
 // назначить функцию отправки формы автора
 function profileSubmitHandler(evt) {
