@@ -102,7 +102,7 @@ closePopupButtons.forEach((item) => {
 function openEditProfileForm() {
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
-  resetForm(popupEditAuthor, config);
+  // resetForm(popupEditAuthor, config);
   openPopup(popupEditAuthor);
 }
 
@@ -126,7 +126,7 @@ function cardSubmitHandler(evt) {
 };
 
 openAuthorPopupBtn.addEventListener("click", openEditProfileForm);
-
+// openAuthorPopupBtn.addEventListener('click', () => console.log('click'))
 
 openCardPopupBtn.addEventListener("click", () => {
   popupImgName.value = null;
