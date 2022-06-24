@@ -20,17 +20,20 @@ const elements = page.querySelector(".elements"); // все карточки с 
 const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
 const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
 const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
+const editAuthorSubmitBtn = popupEditAuthor.querySelector(".edit-author-submit-button");
+const editCardSubmitBtn = popupEditCard.querySelector(".edit-card-submit-button");
+
 // функция открытия попапа
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", escapePopup);
-  document.addEventListener("mousedown", closeOnClick);
+  popup.addEventListener("mousedown", closeOnClick);
 }
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", escapePopup);
-  document.removeEventListener("mousedown", closeOnClick);
+  popup.removeEventListener("mousedown", closeOnClick);
 }
 const escapePopup = (evt) => {
   if (evt.key === "Escape") {
@@ -96,15 +99,17 @@ closePopupButtons.forEach((item) => {
   });
 });
 
-// заполняет окошки формы первоначальными данными из профиля
-function openedProfile() {
+function openEditProfileForm() {
+  // resetForm(formProfile);
+  // hideButton(editAuthorSubmitBtn);
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
   setError(popupEditAuthor);
   openPopup(popupEditAuthor);
 }
+
 // назначить функцию отправки формы автора
-function formSubmitHandler(evt) {
+function profileSubmitHandler(evt) {
   evt.preventDefault();
   profileAuthor.textContent = nameInput.value;
   profileSubline.textContent = sublineInput.value;
@@ -119,15 +124,10 @@ function cardSubmitHandler(evt) {
   renderCard(newImgName, newImgUrl);
 
   closePopup(popupEditCard);
-}
+};
 
-openAuthorPopupBtn.addEventListener("click", openedProfile);
+openAuthorPopupBtn.addEventListener("click", openEditProfileForm);
 
-// function openPopupCard() {
-//   popupImgName.value = null;
-//   popupImgUrl.value = null;
-//   openPopup(popupEditCard);
-// };
 
 openCardPopupBtn.addEventListener("click", () => {
   popupImgName.value = null;
@@ -136,5 +136,5 @@ openCardPopupBtn.addEventListener("click", () => {
   openPopup(popupEditCard);
 });
 
-formProfile.addEventListener("submit", formSubmitHandler);
+formProfile.addEventListener("submit", profileSubmitHandler);
 formCard.addEventListener("submit", cardSubmitHandler);

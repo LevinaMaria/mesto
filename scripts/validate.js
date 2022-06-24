@@ -8,7 +8,6 @@ const isValid = (formElement, inputElement) => {
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
   inputElement.classList.add("popup__item_invalid");
   errorElement.textContent = errorMessage;
   errorElement.classList.add("popup__error_visible");
@@ -16,7 +15,6 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  console.log(errorElement)
   inputElement.classList.remove("popup__item_invalid");
   errorElement.classList.remove("popup__error_visible");
   errorElement.textContent = "";
@@ -43,7 +41,7 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add("popup__submit-button_disabled");
-    buttonElement.setAttribute('disadled', true);
+    buttonElement.setAttribute('disabled', true);
   } else {
     buttonElement.classList.remove("popup__submit-button_disabled");
     buttonElement.removeAttribute('disabled');
@@ -59,8 +57,6 @@ const enableValidation = () => {
     setErrorEventListeners(formElement);
   });
 };
-
-//TODO: написать функцию предвалидации
 const resetForm = (formElement) => {
   inputList.forEach((inputElement) => {
     hideInputError(formElement, inputElement, enableValidation());
@@ -77,12 +73,11 @@ const setError = (formElement) => {
     hideInputError(formElement, inputElement);
   })
 };
-
-enableValidation({
+enableValidation ({
   formSelector: '.popup__form',
   inputSelector: '.popup__item',
   submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_hideInputError',
+  inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__item_invalid',
   errorClass: 'popup__error_visible'
 });
