@@ -102,7 +102,7 @@ closePopupButtons.forEach((item) => {
 function openEditProfileForm() {
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
-  // resetForm(popupEditAuthor, config);
+  resetForm(popupEditAuthor, config);
   openPopup(popupEditAuthor);
 }
 
