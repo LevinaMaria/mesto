@@ -52,8 +52,9 @@ const setEventListeners = (formElement, config) => {
 const resetForm = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  buttonElement.classList.add(config.inactiveButtonClass);
-  buttonElement.setAttribute('disabled', true);
+  // buttonElement.classList.add(config.inactiveButtonClass);
+  // buttonElement.setAttribute('disabled', true);
+  toggleButtonState(inputList, buttonElement, config)
   inputList.forEach((inputElement) => {
     hideInputError(formElement, inputElement, config);
   });

@@ -126,7 +126,6 @@ function cardSubmitHandler(evt) {
 };
 
 openAuthorPopupBtn.addEventListener("click", openEditProfileForm);
-// openAuthorPopupBtn.addEventListener('click', () => console.log('click'))
 
 openCardPopupBtn.addEventListener("click", () => {
   popupImgName.value = null;
