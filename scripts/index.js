@@ -100,11 +100,9 @@ closePopupButtons.forEach((item) => {
 });
 
 function openEditProfileForm() {
-  // resetForm(formProfile);
-  // hideButton(editAuthorSubmitBtn);
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
-  setError(popupEditAuthor);
+  resetForm(popupEditAuthor, config);
   openPopup(popupEditAuthor);
 }
 
@@ -133,7 +131,7 @@ openAuthorPopupBtn.addEventListener("click", openEditProfileForm);
 openCardPopupBtn.addEventListener("click", () => {
   popupImgName.value = null;
   popupImgUrl.value = null;
-  setError(popupEditCard);
+  resetForm(popupEditCard, config);
   openPopup(popupEditCard);
 });
 
