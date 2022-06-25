@@ -1,13 +1,11 @@
 const page = document.querySelector(".page"); //страница
 const profile = page.querySelector(".profile"); // профиль (секция с именем и данными пользователя)
-const popups = page.querySelector(".popup"); // все модальные окна
 const popupEditAuthor = page.querySelector(".popup-edit-author"); // попап редактирования профиля (1)
 const popupEditCard = page.querySelector(".popup-edit-card"); // попап добавления карточки (2)
 const popupViewImage = page.querySelector(".popup-view-image"); // попап просмотра картинки (3)
 const openAuthorPopupBtn = profile.querySelector(".profile__change-button"); // открытие окна профиля (1)
 const openCardPopupBtn = profile.querySelector(".profile__add-button"); // открытие окна добавления карточки (2)
 const closePopupButtons = page.querySelectorAll(".popup__close-button"); // кнопка закрытия попап (любого)
-// const submitButton = page.querySelectorAll(".popup__submit-button"); // кнопка сохранения данных в форму (в любом окне)
 const formProfile = popupEditAuthor.querySelector(".popup__edit-profile"); // форма редактирования профиля (1)
 const formCard = popupEditCard.querySelector(".popup__edit-card"); // форма редактирования карточки (2)
 const nameInput = popupEditAuthor.querySelector(".item-name"); // поле редактирования имени (1)
@@ -68,7 +66,7 @@ function createCard(name, link) {
     const deletedEelement = deleteCardBtn.closest(".element"); // назначить выбор удаляемой карточки
     deletedEelement.remove(); // удалить карточку
   });
-  // слушатель события клика на картинку
+  // слушатель события клика на картинку. TODO перенести слушатель в конец скрипта
   cardImage.addEventListener("click", () => {
     openPopup(popupViewImage); // открытие попапа по клику на картинку (3)
     imageView.src = link;
@@ -102,7 +100,7 @@ closePopupButtons.forEach((item) => {
 function openEditProfileForm() {
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
-  resetForm(popupEditAuthor, config);
+  resetForm(popupEditAuthor, validationConfig);
   openPopup(popupEditAuthor);
 }
 
@@ -130,7 +128,7 @@ openAuthorPopupBtn.addEventListener("click", openEditProfileForm);
 openCardPopupBtn.addEventListener("click", () => {
   popupImgName.value = null;
   popupImgUrl.value = null;
-  resetForm(popupEditCard, config);
+  resetForm(popupEditCard, validationConfig);
   openPopup(popupEditCard);
 });
 
