@@ -1,3 +1,7 @@
+import Card from './Card.js';//???
+import {initialCards} from './initialCards.js';
+import {FormValidator} from './FormValidator.js';//???
+
 const page = document.querySelector(".page"); //страница
 const profile = page.querySelector(".profile"); // профиль (секция с именем и данными пользователя)
 const popupEditAuthor = page.querySelector(".popup-edit-author"); // попап редактирования профиля (1)
@@ -20,6 +24,29 @@ const imageView = popupViewImage.querySelector(".popup__view-image"); // кар�
 const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
 const editAuthorSubmitBtn = popupEditAuthor.querySelector(".edit-author-submit-button");
 const editCardSubmitBtn = popupEditCard.querySelector(".edit-card-submit-button");
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__item_invalid',
+  errorClass: 'popup__error_visible'
+};
+
+const profileFormValidation = new FormValidator(validationConfig, popupEditAuthor);
+const cardFormValidation = new FormValidator(validationConfig, popupEditCard);
+profileFormValidation.enableValidation();
+cardFormValidation.enableValidation();
+
+const resetForm = (formElement, validationConfig) => {
+  const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+  const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, validationConfig)
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, validationConfig);
+  });
+}
 
 // функция открытия попапа
 function openPopup(popup) {
@@ -46,12 +73,7 @@ const closeOnClick = (evt) => {
 };
 //функция передачи данных карточке
 function createCard(name, link) {
-  const cardElement = templateElement.cloneNode(true); // клонируем темплейт
-  const cardCaption = cardElement.querySelector(".element__caption"); // данные подписи картинки
-  const cardImage = cardElement.querySelector(".element__image"); // данные картинки
-  cardCaption.textContent = name;
-  cardImage.src = link;
-  cardImage.alt = name;
+  
 
   const likeImage = cardElement.querySelector(".element__like-button"); // кнопка лайк в карточке
 
@@ -103,7 +125,6 @@ function openEditProfileForm() {
   resetForm(popupEditAuthor, validationConfig);
   openPopup(popupEditAuthor);
 }
-
 
 // назначить функцию отправки формы автора
 function profileSubmitHandler(evt) {
