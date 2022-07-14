@@ -19,13 +19,23 @@ const profileSubline = profile.querySelector(".profile__subline"); // перво
 const popupImgName = popupEditCard.querySelector(".item-img-name"); // имя картинки в карточке (2)
 const popupImgUrl = popupEditCard.querySelector(".item-img-url"); // ссылка картинки в карточке (2)
 const elements = page.querySelector(".elements"); // все карточки с картинками (2)
-const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
+// const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
 const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
 const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
 const editAuthorSubmitBtn = popupEditAuthor.querySelector(".edit-author-submit-button");
 const editCardSubmitBtn = popupEditCard.querySelector(".edit-card-submit-button");
 
-const validationConfig = {
+const cardSelectors = {
+  templateElement: '.element-template',
+  card: '.element',
+  title: '.element__caption',
+  image: '.element__image',
+  buttonLike: '.element__like-button',
+  buttonLikeActive: '.element__like-button_active',
+  buttonDelete: '.element__trash-button'
+}
+
+const formSelectors = {
   formSelector: '.popup__form',
   inputSelector: '.popup__item',
   submitButtonSelector: '.popup__submit-button',
@@ -34,8 +44,8 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 };
 
-const profileFormValidation = new FormValidator(validationConfig, popupEditAuthor);
-const cardFormValidation = new FormValidator(validationConfig, popupEditCard);
+const profileFormValidation = new FormValidator(formSelectors, popupEditAuthor);
+const cardFormValidation = new FormValidator(formSelectors, popupEditCard);
 profileFormValidation.enableValidation();
 cardFormValidation.enableValidation();
 
