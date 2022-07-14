@@ -1,4 +1,4 @@
-import Card from './Card.js';//???
+import {Card} from './Card.js';//???
 import {initialCards} from './initialCards.js';
 import {FormValidator} from './FormValidator.js';//???
 
@@ -18,7 +18,7 @@ const profileAuthor = profile.querySelector(".profile__author"); // первон
 const profileSubline = profile.querySelector(".profile__subline"); // первоначальное значение подписи в профиле (1)
 const popupImgName = popupEditCard.querySelector(".item-img-name"); // имя картинки в карточке (2)
 const popupImgUrl = popupEditCard.querySelector(".item-img-url"); // ссылка картинки в карточке (2)
-const elements = page.querySelector(".elements"); // все карточки с картинками (2)
+const cards = page.querySelector(".elements"); // все карточки с картинками (2)
 // const templateElement = page.querySelector(".element-template").content; // привязать темплейт к карточке (2)
 const imageView = popupViewImage.querySelector(".popup__view-image"); // картинка в третьем попапе (3)
 const imageViewTitle = popupViewImage.querySelector(".popup__image-title"); // подпись картинки в попакпе (3)
@@ -109,7 +109,7 @@ function createCard(name, link) {
   return cardElement;
 }
 function renderCard(name, link) {
-  elements.prepend(createCard(name, link));
+  cards.prepend(createCard(name, link));
 }
 
 // данные карточек из констант

@@ -1,16 +1,39 @@
-export default class Card {
-    constructor(card) {
-        this._card = card.name;
-        this._link = card.link;
-        this._templateSelector = templateSelector;
+export class Card {
+    constructor(name, link, selectors, viewPopupImage) {
+        this._name = name;
+        this._link = link;
+        this._selectors = selectors;
         this._viewPopupImage = viewPopupImage;
     }
-    _getTemplate(name, link){
-        const cardElement = templateElement.cloneNode(true); // клонируем темплейт
-        const cardCaption = cardElement.querySelector(".element__caption"); // данные подписи картинки
-        const cardImage = cardElement.querySelector(".element__image"); // данные картинки
-        cardCaption.textContent = name;
-        cardImage.src = link;
-        cardImage.alt = name;
+    _getTemplate(){
+        this._element = document.querySelector(this._selectors.template).content.querySelector(this._selectors.card).cloneNode(true);
+        return this._element;
+    }
+    createCard() {
+        this._getTemplate();
+        this._element.querySelector(this._selectors.title).textContent = this._name;
+        this._image = this._element.querySelector(this._selectors.image);
+        this._image.src = this._link;
+        this._image.link = this._link;
+        this._image.alt = this._name;
+        this._setListeners();
+        return this._element;
+    }
+    _setListeners() {
+        this._buttonLike = this._element.querySelector(this._selectors.buttonLike);
+        this._buttonDelete = this._element.querySelector(this._selectors.buttonDelete);
+        this._buttonDelete.addEventListener('click', () => this._deleteCard());
+        this._buttonLike.addEventListener('click', () => this._likeCard());
+        this._image.addEventListener('click', () => this._handlePopupImage());
+    }
+    _handlePopupImage() {
+        this._viewPopupImage(this._name, this._link);
+    }
+    _likeCard() {
+        this._buttonLike.classList.toggle(this._selectors.buttonLikeActive);
+    }
+    _deleteCard() {
+        this._element.remove();
+        this._element = null;
     }
 };
