@@ -93,13 +93,10 @@ const openViewPopupImg = (name, link) => {
   openPopup(popupViewImage);
 }
 
+function renderCard (data) {
+  data.forEach(item => cards.prepend(createCard(item)));
+}
 
-// данные карточек из констант
-initialCards.forEach((item) => {
-  const name = item.name;
-  const link = item.link;
-  renderCard(name, link);
-});
 
 // поиск всех кнопок закрытия
 closePopupButtons.forEach((item) => {
@@ -138,7 +135,7 @@ function handleCardFormSubmit (evt) {
   evt.preventDefault();
   const newImgName = popupImgName.value;
   const newImgUrl = popupImgUrl.value;
-  renderCard(newImgName, newImgUrl);
+  cards.prepend(createCard(newImgName, newImgUrl));
 
   closePopup(popupEditCard);
 };
