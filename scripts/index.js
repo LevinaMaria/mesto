@@ -96,7 +96,7 @@ const openViewPopupImg = (name, link) => {
 function renderCard (data) {
   data.forEach(item => cards.prepend(createCard(item)));
 }
-
+renderCard(initialCards);
 
 // поиск всех кнопок закрытия
 closePopupButtons.forEach((item) => {
