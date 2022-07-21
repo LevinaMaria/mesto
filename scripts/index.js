@@ -13,10 +13,10 @@ const popupViewImage = page.querySelector('.popup-view-image'); // попап п
 const formProfile = popupEditAuthor.querySelector('.popup__edit-profile'); // форма редактирования профиля (1)
 const formCard = popupEditCard.querySelector('.popup__edit-card'); // форма редактирования карточки (2)
 
-const nameInput = popupEditAuthor.elements.name; // поле редактирования имени (1)
-const sublineInput = popupEditAuthor.elements.subline; // поле редактирования подписи (1)
-const popupImgName = popupEditCard.elements.imgName; // имя картинки в карточке (2)
-const popupImgUrl = popupEditCard.elements.imgUrl; // ссылка картинки в карточке (2)
+const nameInput = popupEditAuthor.querySelector('.item-name'); // поле редактирования имени (1)
+const sublineInput = popupEditAuthor.querySelector('.item-subline'); // поле редактирования подписи (1)
+const popupImgName = popupEditCard.querySelector('.item-img-name'); // имя картинки в карточке (2)
+const popupImgUrl = popupEditCard.querySelector('.item-img-url'); // ссылка картинки в карточке (2)
 
 const profile = page.querySelector('.profile'); // профиль (секция с именем и данными пользователя)
 const profileAuthor = profile.querySelector('.profile__author'); // первоначальное значение имени в профиле (1)
@@ -32,17 +32,14 @@ const closePopupButtons = page.querySelectorAll('.popup__close-button'); // кн
 // const editAuthorSubmitBtn = popupEditAuthor.querySelector('.edit-author-submit-button');
 // const editCardSubmitBtn = popupEditCard.querySelector('.edit-card-submit-button');
 
-const cardSelectors = {
+const selectors = {
   templateElement: '.element-template',
   card: '.element',
   title: '.element__caption',
   image: '.element__image',
   buttonLike: '.element__like-button',
   buttonLikeActive: '.element__like-button_active',
-  buttonDelete: '.element__trash-button'
-};
-
-const formSelectors = {
+  buttonDelete: '.element__trash-button',
   formSelector: '.popup__form',
   inputSelector: '.popup__item',
   submitButtonSelector: '.popup__submit-button',
@@ -51,14 +48,15 @@ const formSelectors = {
   errorClass: 'popup__error_visible'
 };
 
-const profileFormValidation = new FormValidator(formSelectors, popupEditAuthor);
-const cardFormValidation = new FormValidator(formSelectors, popupEditCard);
+
+const profileFormValidation = new FormValidator(selectors, popupEditAuthor);
+const cardFormValidation = new FormValidator(selectors, popupEditCard);
 profileFormValidation.enableValidation();
 cardFormValidation.enableValidation();
 
 // функция создания карточки
 function createCard(item) {
-  const newCard = new Card (cardSelectors, item.name, item.link, viewPopupImage);
+  const newCard = new Card (selectors, item.name, item.link, viewPopupImage);
   return newCard.createCard();
 }
 // функция открытия попапа
