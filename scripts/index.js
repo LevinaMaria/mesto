@@ -32,14 +32,17 @@ const closePopupButtons = page.querySelectorAll('.popup__close-button'); // кн
 // const editAuthorSubmitBtn = popupEditAuthor.querySelector('.edit-author-submit-button');
 // const editCardSubmitBtn = popupEditCard.querySelector('.edit-card-submit-button');
 
-const selectors = {
+const cardSelectors = {
   templateElement: '.element-template',
   card: '.element',
   title: '.element__caption',
   image: '.element__image',
   buttonLike: '.element__like-button',
   buttonLikeActive: '.element__like-button_active',
-  buttonDelete: '.element__trash-button',
+  buttonDelete: '.element__trash-button'
+};
+
+const formSelectors = {
   formSelector: '.popup__form',
   inputSelector: '.popup__item',
   submitButtonSelector: '.popup__submit-button',
@@ -48,15 +51,14 @@ const selectors = {
   errorClass: 'popup__error_visible'
 };
 
-
-const profileFormValidation = new FormValidator(selectors, popupEditAuthor);
-const cardFormValidation = new FormValidator(selectors, popupEditCard);
+const profileFormValidation = new FormValidator (formSelectors, popupEditAuthor);
+const cardFormValidation = new FormValidator (formSelectors, popupEditCard);
 profileFormValidation.enableValidation();
 cardFormValidation.enableValidation();
 
 // функция создания карточки
 function createCard(item) {
-  const newCard = new Card (selectors, item.name, item.link, viewPopupImage);
+  const newCard = new Card (cardSelectors, item.name, item.link, viewPopupImage);
   return newCard.createCard();
 }
 // функция открытия попапа
