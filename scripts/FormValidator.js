@@ -65,7 +65,5 @@ export class FormValidator {
 
   enableValidation() {
     this._setEventListeners();
-    console.log(this._buttonElement);
-    console.log(this._inputList);
   }
 };

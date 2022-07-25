@@ -1,8 +1,8 @@
 export class Card {
-    constructor(name, link, config, viewPopupImage) {
+    constructor(config, name, link, viewPopupImage) {
+        this._config = config;
         this._name = name;
         this._link = link;
-        this._config = config;
         this._viewPopupImage = viewPopupImage;
     }
     _getTemplate(){
@@ -31,7 +31,6 @@ export class Card {
     }
     _likeCard() {
         this._buttonLike.classList.toggle(this._config.buttonLikeActive);
-        console.log(this._config.buttonLikeActive)
     }
     _deleteCard() {
         this._element.remove();
