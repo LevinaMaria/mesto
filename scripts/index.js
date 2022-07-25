@@ -5,7 +5,7 @@ import { FormValidator } from './FormValidator.js';
 const page = document.querySelector('.page'); //страница
 const cards = page.querySelector('.elements'); // место вставки карточек
 
-const popups = page.querySelectorAll('.popup');
+// const popups = page.querySelectorAll('.popup');
 const popupEditAuthor = page.querySelector('.popup-edit-author'); // попап редактирования профиля (1)
 const popupEditCard = page.querySelector('.popup-edit-card'); // попап добавления карточки (2)
 const popupViewImage = page.querySelector('.popup-view-image'); // попап просмотра картинки (3)
@@ -29,8 +29,6 @@ const openAuthorPopupBtn = profile.querySelector('.profile__change-button'); // 
 const openCardPopupBtn = profile.querySelector('.profile__add-button'); // открытие окна добавления карточки (2)
 const closePopupButtons = page.querySelectorAll('.popup__close-button'); // кнопка закрытия попап (любого)
 
-// const editAuthorSubmitBtn = popupEditAuthor.querySelector('.edit-author-submit-button');
-// const editCardSubmitBtn = popupEditCard.querySelector('.edit-card-submit-button');
 
 const cardsConfig = {
   templateElement: '.element-template',
@@ -38,7 +36,7 @@ const cardsConfig = {
   title: '.element__caption',
   image: '.element__image',
   buttonLike: '.element__like-button',
-  buttonLikeActive: '.element__like-button_active',
+  buttonLikeActive: 'element__like-button_active',
   buttonDelete: '.element__trash-button'
 };
 
@@ -58,7 +56,7 @@ cardFormValidation.enableValidation();
 
 // функция создания карточки
 function createCard(item) {
-  const newCard = new Card (cardsConfig, item.name, item.link, viewPopupImage);
+  const newCard = new Card (item.name, item.link, cardsConfig, viewPopupImage);
   return newCard.createCard();
 }
 // функция открытия попапа
@@ -86,7 +84,7 @@ const closeOnClick = (evt) => {
 };
 
 // открытие попапа просмотра картинки
-const openViewPopupImg = (name, link) => {
+const viewPopupImage = (name, link) => {
   imageView.src = link;
   imageView.alt = name;
   imageViewTitle.textContent = name;
@@ -111,15 +109,14 @@ closePopupButtons.forEach((item) => {
 function openEditProfileForm() {
   nameInput.value = profileAuthor.textContent;
   sublineInput.value = profileSubline.textContent;
-  profileFormValidation.resetValidation();
   openPopup(popupEditAuthor);
 }
 
-// function openEditCardForm() {
-//   formCard.reset();
-//   cardFormValidation.resetValidation();
-//   openPopup(popupEditCard);
-// }
+function openEditCardForm() {
+  formCard.reset();
+  cardFormValidation.resetValidation();
+  openPopup(popupEditCard);
+}
 
 // назначить функцию отправки формы автора
 function handleProfileFormSubmit (evt) {
@@ -145,8 +142,8 @@ openAuthorPopupBtn.addEventListener('click', openEditProfileForm);
 openCardPopupBtn.addEventListener('click', () => {
   popupImgName.value = null;
   popupImgUrl.value = null;
-  resetForm(popupEditCard, validationConfig);
-  openPopup(popupEditCard);
+  
+  openEditCardForm(popupEditCard);
 });
 
 formProfile.addEventListener('submit', handleProfileFormSubmit);
