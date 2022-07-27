@@ -111,9 +111,8 @@ function handleProfileFormSubmit (evt) {
 // добавить функцию заполнения карточки пользователем
 function handleCardFormSubmit (evt) {
   evt.preventDefault();
-  const newImgName = popupImgName.value;
-  const newImgUrl = popupImgUrl.value;
-  cards.prepend(createCard(newImgName, newImgUrl));
+const data = {name: popupImgName.value, link: popupImgUrl.value}
+  cards.prepend(createCard(data));
 
   closePopup(popupEditCard);
 };
