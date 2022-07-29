@@ -3,32 +3,11 @@ import { initialCards } from './initialCards.js';
 import { FormValidator } from './FormValidator.js';
 import { cardsConfig, validationConfig } from './data.js';
 
-const page = document.querySelector('.page'); //страница
-const cards = page.querySelector('.elements'); // место вставки карточек
-
-// const popups = page.querySelectorAll('.popup');
-const popupEditAuthor = page.querySelector('.popup-edit-author'); // попап редактирования профиля (1)
-const popupEditCard = page.querySelector('.popup-edit-card'); // попап добавления карточки (2)
-const popupViewImage = page.querySelector('.popup-view-image'); // попап просмотра картинки (3)
-
-const formProfile = popupEditAuthor.querySelector('.popup__edit-profile'); // форма редактирования профиля (1)
-const formCard = popupEditCard.querySelector('.popup__edit-card'); // форма редактирования карточки (2)
 
 const nameInput = popupEditAuthor.querySelector('.item-name'); // поле редактирования имени (1)
 const sublineInput = popupEditAuthor.querySelector('.item-subline'); // поле редактирования подписи (1)
 const popupImgName = popupEditCard.querySelector('.item-img-name'); // имя картинки в карточке (2)
 const popupImgUrl = popupEditCard.querySelector('.item-img-url'); // ссылка картинки в карточке (2)
-
-const profile = page.querySelector('.profile'); // профиль (секция с именем и данными пользователя)
-const profileAuthor = profile.querySelector('.profile__author'); // первоначальное значение имени в профиле (1)
-const profileSubline = profile.querySelector('.profile__subline'); // первоначальное значение подписи в профиле (1)
-
-const imageView = popupViewImage.querySelector('.popup__view-image'); // картинка в третьем попапе (3)
-const imageViewTitle = popupViewImage.querySelector('.popup__image-title'); // подпись картинки в попакпе (3)
-
-const buttonOpenPopupProfile = profile.querySelector('.profile__change-button'); // открытие окна профиля (1)
-const buttonOpenPopupCard = profile.querySelector('.profile__add-button'); // открытие окна добавления карточки (2)
-const buttonsClosePopup = page.querySelectorAll('.popup__close-button'); // кнопка закрытия попап (любого)
 
 const formValidationProfile = new FormValidator (validationConfig, popupEditAuthor);
 const formValidationCard = new FormValidator (validationConfig, popupEditCard);
