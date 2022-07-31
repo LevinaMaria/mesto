@@ -25,7 +25,7 @@ const cardsConfig = {
     input: '.popup__item',
     popupEditAuthor: '.popup-edit-author',
     popupEditCard: '.popup-edit-card',
-    popupViewImage: '.popup-view-image',
+    popupViewImage: '.popup-image-view',
     imageView: '.popup__view-image',
     imageViewTitle: '.popup__image-title'
   }

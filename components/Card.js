@@ -1,9 +1,9 @@
 export class Card {
-    constructor(config, name, link, viewPopupImage) {
+    constructor(config, name, link, handleCardClick) {
         this._config = config;
         this._name = name;
         this._link = link;
-        this._viewPopupImage = viewPopupImage;
+        this._handleCardClick = handleCardClick;
     }
     _getTemplate(){
         this._element = document.querySelector(this._config.templateElement).content.querySelector(this._config.card).cloneNode(true);
@@ -27,7 +27,7 @@ export class Card {
         this._image.addEventListener('click', () => this._handlePopupImage());
     }
     _handlePopupImage() {
-        this._viewPopupImage(this._name, this._link);
+        this._handleCardClick(this._name, this._link);
     }
     _likeCard() {
         this._buttonLike.classList.toggle(this._config.buttonLikeActive);
