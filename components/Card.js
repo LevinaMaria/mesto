@@ -1,8 +1,8 @@
 export class Card {
-    constructor(config, name, link, handleCardClick) {
+    constructor(config, item, handleCardClick) {
+        this._name = item.name;
+        this._link = item.link;
         this._config = config;
-        this._name = name;
-        this._link = link;
         this._handleCardClick = handleCardClick;
     }
     _getTemplate(){

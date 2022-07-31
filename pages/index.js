@@ -1,5 +1,3 @@
-import './index.css';
-
 import { Card } from '../components/Card.js';
 import { UserInfo} from '../components/UserInfo.js';
 import { initialCards } from '../utils/initialCards.js';
@@ -19,35 +17,35 @@ import {
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js'
 
-const formValidationProfile = new FormValidator (validationConfig, popupEditAuthor);
-const formValidationCard = new FormValidator (validationConfig, popupEditCard);
+const formValidationProfile = new FormValidator (validationConfig, formProfile);
+const formValidationCard = new FormValidator (validationConfig, formCard);
 formValidationProfile.enableValidation();
 formValidationCard.enableValidation();
 
 // функция создания карточки
 function createCard(item) {
-  const newCard = new Card (cardsConfig, item.name, item.link, viewPopupImage);
+  const newCard = new Card (cardsConfig, item, handleCardClick);
   return newCard.createCard();
 }
 
 //renderer
-const initialCardsRenderer = new Section ({
-  inputData: initialCards,
+const cardList = new Section ({
+  items: initialCards.reverse(),
   renderer: (item) => {
-    initialCardsRenderer.addItem(createCard(item));
+    cardList.addItem(createCard(item));
   }
-}, cards);
-initialCardsRenderer.renderAll();
+}, '.elements');
+cardList.renderItems();
 
 const popupImage = new PopupWithImage (popupConfig.popupViewImage, popupConfig);
 popupImage.setEventListeners();
 
-function handleCardSubmit (name, link) {
+function handleCardClick (name, link) {
   popupImage.open(name, link);
 };
 
 function handleCardSubmit (inputValues) {
-  initialCardsRenderer.addItem(createCard(inputValues));
+  cardList.addItem(createCard(inputValues));
 };
 
 const popupAddCard = new PopupWithForm (
@@ -58,7 +56,7 @@ const popupAddCard = new PopupWithForm (
 
 popupAddCard.setEventListeners();
 
-const profileUpdate = UserInfo (profileConfig);
+const profileUpdate = new UserInfo (profileConfig);
 
 function handleProfileSubmit (inputValues) {
   profileUpdate.setUserInfo(inputValues);

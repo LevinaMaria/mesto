@@ -19,7 +19,6 @@ const cardsConfig = {
 
   const popupConfig = {
     opened: 'popup_opened',
-    area: '.popup__container',
     buttonClosePopup: 'popup__close-button',
     form: '.popup__form',
     input: '.popup__item',
@@ -30,12 +29,12 @@ const cardsConfig = {
     imageViewTitle: '.popup__image-title'
   }
   const profileConfig = {
-    profileAuthor: '.profile__author',
-    profileSubline: '.profile__subline'
+    userName: '.profile__author',
+    userSubline: '.profile__subline'
   }
   
-  const formProfile = popupEditAuthor.querySelector('.popup__edit-profile');
-  const formCard = popupEditCard.querySelector('.popup__edit-card');
+  const formProfile = document.querySelector('.popup__edit-profile');
+  const formCard = document.querySelector('.popup__edit-card');
   const page = document.querySelector('.page');
   const profile = page.querySelector('.profile');
   const buttonOpenPopupProfile = profile.querySelector('.profile__change-button');
