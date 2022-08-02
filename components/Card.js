@@ -1,7 +1,7 @@
 export class Card {
     constructor(config, item, handleCardClick) {
-        this._name = item.name;
-        this._link = item.link;
+        this._imgName = item.imgName;
+        this._imgUrl = item.imgUrl;
         this._config = config;
         this._handleCardClick = handleCardClick;
     }
@@ -11,11 +11,11 @@ export class Card {
     }
     createCard() {
         this._getTemplate();
-        this._element.querySelector(this._config.title).textContent = this._name;
+        this._element.querySelector(this._config.title).textContent = this._imgName;
         this._image = this._element.querySelector(this._config.image);
-        this._image.src = this._link;
-        this._image.link = this._link;
-        this._image.alt = this._name;
+        this._image.src = this._imgUrl;
+        this._image.imgUrl = this._imgUrl;
+        this._image.alt = this._imgName;
         this._setListeners();
         return this._element;
     }
@@ -27,7 +27,7 @@ export class Card {
         this._image.addEventListener('click', () => this._handlePopupImage());
     }
     _handlePopupImage() {
-        this._handleCardClick(this._name, this._link);
+        this._handleCardClick(this._imgName, this._imgUrl);
     }
     _likeCard() {
         this._buttonLike.classList.toggle(this._config.buttonLikeActive);

@@ -40,8 +40,8 @@ cardList.renderItems();
 const popupImage = new PopupWithImage (popupConfig.popupViewImage, popupConfig);
 popupImage.setEventListeners();
 
-function handleCardClick (name, link) {
-  popupImage.open(name, link);
+function handleCardClick (imgName, imgUrl) {
+  popupImage.open(imgName, imgUrl);
 };
 
 function handleCardSubmit (inputValues) {
