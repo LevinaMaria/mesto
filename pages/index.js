@@ -56,10 +56,13 @@ const popupAddCard = new PopupWithForm (
 
 popupAddCard.setEventListeners();
 
-const profileUpdate = new UserInfo (profileConfig);
+const newUserInfo = new UserInfo ({
+  name: document.querySelector('.item-name'),
+  subline: document.querySelector('.item-subline')
+});
 
 function handleProfileSubmit (inputValues) {
-  profileUpdate.setUserInfo(inputValues);
+  newUserInfo.setUserInfo(inputValues);
 };
 
 const popupAddProfile = new PopupWithForm (
@@ -73,7 +76,7 @@ popupAddProfile.setEventListeners();
 buttonOpenPopupProfile.addEventListener('click', () => {
   popupAddProfile.open();
   formValidationProfile.resetValidation();
-  popupAddProfile.setInputValues(profileUpdate.getUserInfo());
+  popupAddProfile.setInputValues(newUserInfo.getUserInfo());
 });
 
 buttonOpenPopupCard.addEventListener('click', () => {

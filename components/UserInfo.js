@@ -1,19 +1,19 @@
 export class UserInfo {
-    constructor ({ userName, userSubline }) {
-        this._userName = document.querySelector(userName);
-        this._userSubline = document.querySelector(userSubline);
+    constructor ({ name, subline }) {
+        this._userName = name;
+        this._userSubline = subline;
     }
     //возвращает объект с данными пользователя
     getUserInfo () {
         const userInfo = {
-            userName: this._userName.textContent,
-            userSubline: this._userSubline.textContent
+            name: this.name.textContent,
+            subline: this.subline.textContent
         };
         return userInfo;
     }
     //принимает новые данные пользователя и добавляет их на страницу
     setUserInfo (inputValues) {
-        this._userName.textContent = inputValues.userName;
-        this._userSubline.textContent = inputValues.userSubline;
+        this._userName.textContent = inputValues.nameInput;
+        this._userSubline.textContent = inputValues.sublineInput;
     }
 }
