@@ -5,10 +5,10 @@ export class UserInfo {
     }
     //возвращает объект с данными пользователя
     getUserInfo () {
-        const userInfo = {};
-        userInfo.userName = this._userName.textContent;
-        userInfo.userSubline = this._userSubline.textContent;
-        
+        const userInfo = {
+            userName: this._userName.textContent,
+            userSubline: this._userSubline.textContent
+        };
         return userInfo;
     }
     //принимает новые данные пользователя и добавляет их на страницу
