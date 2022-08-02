@@ -1,0 +1,38 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "Учебный проект студентки Яндекс.Практикум **Левиной Марии**  \r В проекте применена файловая структура Nested по БЭМ. Использовано абсолютное позиционирование, флекс верстка, анимации grid и адаптивная верстка, а такжe JavaScript.  \r ### Планы по доработке:  \r * внести правки после ревью)  \r * Добавить возможность закрытия попап нажатием в любую точку экрана не попапа.\r <a href=\"https://levinamaria.github.io/mesto/\">Проект Место</a>",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LevinaMaria/mesto.git"
+  },
+  "author": "Maria Levina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LevinaMaria/mesto/issues"
+  },
+  "homepage": "https://github.com/LevinaMaria/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "autoprefixer": "^10.4.8",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.12",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss-loader": "^7.0.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  },
+  "dependencies": {
+    "core-js": "^3.24.1"
+  }
+}

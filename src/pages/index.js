@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import { Card } from '../components/Card.js';
 import { UserInfo} from '../components/UserInfo.js';
 import { initialCards } from '../utils/initialCards.js';
@@ -6,13 +8,13 @@ import { Section } from '../components/Section.js';
 import { 
   cardsConfig, 
   validationConfig, 
-  popupConfig, 
+  popupConfig,
   profileConfig,
   formProfile,
   formCard,
   buttonOpenPopupProfile,
   buttonOpenPopupCard,
-  cards 
+  cards
 } from '../utils/data.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js'
