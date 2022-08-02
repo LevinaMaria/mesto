@@ -29,8 +29,8 @@ const cardsConfig = {
     imageViewTitle: '.popup__image-title'
   }
   const profileConfig = {
-    userName: '.profile__author',
-    userSubline: '.profile__subline'
+    name: '.profile__author',
+    subline: '.profile__subline'
   }
   
   const formProfile = document.querySelector('.popup__edit-profile');

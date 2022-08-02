@@ -56,10 +56,7 @@ const popupAddCard = new PopupWithForm (
 
 popupAddCard.setEventListeners();
 
-const newUserInfo = new UserInfo ({
-  name: document.querySelector('.item-name'),
-  subline: document.querySelector('.item-subline')
-});
+const newUserInfo = new UserInfo (profileConfig);
 
 function handleProfileSubmit (inputValues) {
   newUserInfo.setUserInfo(inputValues);
@@ -75,7 +72,6 @@ popupAddProfile.setEventListeners();
 
 buttonOpenPopupProfile.addEventListener('click', () => {
   popupAddProfile.open();
-  formValidationProfile.resetValidation();
   popupAddProfile.setInputValues(newUserInfo.getUserInfo());
 });
 
