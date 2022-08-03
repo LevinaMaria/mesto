@@ -1,13 +1,11 @@
 const imageAvatar = new URL('../images/nika.jpg', import.meta.url);
 const imageButtonAdd = new URL('../images/add.svg', import.meta.url);
-const imageButtonClose = new URL('../images/Close Icon.svg', import.meta.url);
+const imageButtonClose = new URL('../images/CloseIcon.svg', import.meta.url);
 const imageButtonDelete = new URL('../images/Group.svg', import.meta.url);
 const imageButtonEditPen = new URL('../images/change.svg', import.meta.url);
 const imageButtonLikeActive = new URL('../images/Union.svg', import.meta.url);
 const imageButtonDisabled = new URL('../images/like.svg', import.meta.url);
 const imageLogo = new URL('../images/logo.svg', import.meta.url);
-
-
 
 const images = [
   {name: 'imageAvatar', link: imageAvatar},
