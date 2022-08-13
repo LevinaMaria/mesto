@@ -18,6 +18,7 @@
 
 .profile__avatar-button::before{
   position: absolute;
+  top: 0;
   z-index: 2;
   background-image: url(../../../images/Pen.svg);
   background-size: 26px 26px;
