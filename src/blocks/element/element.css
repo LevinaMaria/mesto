@@ -2,7 +2,7 @@
   border-radius: 10px;
   background-color: #ffffff;
   width: 282px;
-  height: 361px;
+  height: fit-content;
   overflow: hidden;
   color: #000000;
   position: relative;

@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   cursor: pointer;
+  transition: 0.2s linear;
 }
 
 .element__like-button:hover {

@@ -108,7 +108,6 @@ function handleAvatarSubmit () {
 };
 
 function deleteCard (cardId, cardElement) {
-  console.log('deleteCard')
   popupConfirm.showLoader(true, 'Удаление...');
   api.deleteCard(cardId)
   .then(() => cardElement.remove())
@@ -140,9 +139,7 @@ function handleProfileSubmit (inputValues) {
 }
 
 function handleLikeClick (isAnyLikesBefore, likesArr, cardId, buttonLike, buttonLikeActiveSelector, likesCounter) {
-  console.log('bkj')
   const currentUser = newUserInfo.getUserInfo();
-  console.log(currentUser)
   if (!isAnyLikesBefore) {
     api.putLike(cardId, currentUser)
     .then((card) => {
