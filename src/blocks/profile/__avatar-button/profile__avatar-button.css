@@ -14,11 +14,15 @@
 .profile__avatar-button:hover {
     cursor: pointer;
     opacity: 0.2;
-    background-image: url(../../../images/Pen.svg);
-    background-size: 26px 26px;
-    z-index: 4;
-    background-repeat: no-repeat;
-    background-position: center;
+}
+
+.profile__avatar-button::before{
+  position: absolute;
+  z-index: 2;
+  background-image: url(../../../images/Pen.svg);
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
   
 @media screen and (max-width: 560px) {
