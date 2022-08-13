@@ -1,5 +1,5 @@
 export class Card {
-    constructor(config, item, handleCardClick) {
+    constructor(config, item, handleCardClick, handleLikeClick, popupConfirm, user) {
         this._name = item.name;
         this._link = item.link;
         this._cardId = item._id;
@@ -8,7 +8,8 @@ export class Card {
         this._config = config;
         this._handleCardClick = handleCardClick;
         this._handleLikeClick = handleLikeClick;
-        this._popupDeleteConfirm = popupDeleteConfirm;
+        this._popupConfirm = popupConfirm;
+        this._user = user;
     }
 
     _getTemplate(){
@@ -33,7 +34,7 @@ export class Card {
         this._buttonLike = this._element.querySelector(this._config.buttonLike);
         this._buttonDelete = this._element.querySelector(this._config.buttonDelete);
         this._buttonDelete.addEventListener('click', () => {
-            this._popupDeleteConfirm.open(this._cardId, this._element)
+            this._popupConfirm.open(this._cardId, this._element)
         });
         this._buttonLike.addEventListener('click', () => this._handleLikeCard());
         this._image.addEventListener('click', () => this._handlePopupImage());
@@ -48,7 +49,7 @@ export class Card {
     }
     _handleLikeCard () {
         if (this._isAnyLikesBefore()) {
-            this._handleLikeClick(
+            this._handleLikeClick (
                 true,
                 this._likesArr,
                 this._cardId,
@@ -57,12 +58,14 @@ export class Card {
                 this._likesCounter
             )
         } else if (!this._isAnyLikesBefore()) {
+            this._handleLikeClick (
             false,
             this._likesArr,
             this._cardId,
             this._buttonLike,
             this._config.buttonLikeActive,
             this._likesCounter
+            )
         } else {
             console.log('Произошла ошибка')
         }

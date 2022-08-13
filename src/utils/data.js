@@ -41,6 +41,8 @@ const cardsConfig = {
     buttonClosePopup: 'popup__close-button',
     form: '.popup__form',
     input: '.popup__item',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_disabled',
     popupEditAuthor: '.popup-edit-author',
     popupEditCard: '.popup-edit-card',
     popupEditAvatar: '.popup-edit-avatar',
@@ -51,7 +53,7 @@ const cardsConfig = {
   }
   const profileConfig = {
     name: '.profile__author',
-    subline: '.profile__subline',
+    about: '.profile__subline',
     avatar: '.profile__image'
   }
   

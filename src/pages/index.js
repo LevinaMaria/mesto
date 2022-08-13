@@ -25,6 +25,9 @@ import { PopupConfirm } from '../components/PopupConfirm';
 const formValidationProfile = new FormValidator (validationConfig, formProfile);
 const formValidationCard = new FormValidator (validationConfig, formCard);
 const formValidationAvatar = new FormValidator (validationConfig, formAvatar);
+formValidationProfile.enableValidation();
+formValidationCard.enableValidation();
+formValidationAvatar.enableValidation();
 
 const api = new Api ({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46',
@@ -49,7 +52,7 @@ const popupAddProfile = new PopupWithForm (
 );
 
 const popupAddAvatar = new PopupWithForm(
-  popupConfig.popupAddAvatar,
+  popupConfig.popupEditAvatar,
   popupConfig,
   handleAvatarSubmit
 );
@@ -77,7 +80,7 @@ function loadAllData (){
   Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
     newUserInfo.setUserInfo(userData);
-    cardList.renderAll(cardsData.reverse());
+    cardList.renderItems(cardsData.reverse());
   })
   .catch((error) => console.log(`Ошибка: ${error}`));
 };
@@ -88,7 +91,7 @@ function createCard(item) {
     cardsConfig,
     item,
     handleCardClick,
-    handleLikes,
+    handleLikeClick,
     popupConfirm,
     newUserInfo.getUserInfo()
     );
@@ -97,7 +100,7 @@ function createCard(item) {
 
 function handleAvatarSubmit () {
   popupAddAvatar.showLoader(true, 'Сохранение...')
-  api.editUserAvatar(popupAddAvatar._getInputValues())
+  api.setUserAvatar(popupAddAvatar._getInputValues())
   .then((data) => newUserInfo.setUserInfo(data))
   .then(() => popupAddAvatar.close())
   .catch((error) => console.log(error))
@@ -105,6 +108,7 @@ function handleAvatarSubmit () {
 };
 
 function deleteCard (cardId, cardElement) {
+  console.log('deleteCard')
   popupConfirm.showLoader(true, 'Удаление...');
   api.deleteCard(cardId)
   .then(() => cardElement.remove())
@@ -135,12 +139,14 @@ function handleProfileSubmit (inputValues) {
   .finally(() => popupAddProfile.showLoader(false))
 }
 
-function handleLikes (isAnyLikesBefore, likesArr, cardId, likeButton, buttonActiveSelector, likesCounter) {
+function handleLikeClick (isAnyLikesBefore, likesArr, cardId, buttonLike, buttonLikeActiveSelector, likesCounter) {
+  console.log('bkj')
   const currentUser = newUserInfo.getUserInfo();
+  console.log(currentUser)
   if (!isAnyLikesBefore) {
     api.putLike(cardId, currentUser)
     .then((card) => {
-      likeButton.cardList.add(buttonActiveSelector);
+      buttonLike.classList.add(buttonLikeActiveSelector);
       likesArr.push(currentUser)
       likesCounter.textContent = card.likes.length;
     })
@@ -148,7 +154,7 @@ function handleLikes (isAnyLikesBefore, likesArr, cardId, likeButton, buttonActi
   } else {
     api.deleteLike(cardId, currentUser)
     .then((card) => {
-      likeButton.classList.remove(buttonActiveSelector);
+      buttonLike.classList.remove(buttonLikeActiveSelector);
       likesArr.pop(currentUser)
       likesCounter.textContent = card.likes.length;
     })
@@ -157,8 +163,7 @@ function handleLikes (isAnyLikesBefore, likesArr, cardId, likeButton, buttonActi
 }
 
 buttonOpenPopupProfile.addEventListener('click', () => {
-  formValidationProfile.open();
-  formValidationProfile.resetValidation();
+  popupAddProfile.open();
   popupAddProfile.setInputValues(newUserInfo.getUserInfo());
 });
 

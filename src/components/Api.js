@@ -26,7 +26,7 @@ export class Api {
         headers: this._headers,
         body: JSON.stringify({
           name: userData.name,
-          about: userData.subline
+          about: userData.about
       })
     })
     .then(res => this._checkResponse(res))
@@ -62,23 +62,29 @@ export class Api {
     .then(res => this._checkResponse(res))
   }
   deleteCard (cardId) {
-    return fetch (`${this._url}/cards/${cardId}`, {
+    return fetch (`https://mesto.nomoreparties.co/v1/cohort-46/cards/${cardId}`, {
         method: 'DELETE',  
         headers: this._headers
       })
     .then(res => this._checkResponse(res))
   }
-  putLike (cardId) {
-    return fetch (`${this._url}/cards/${cardId}/likes`, {
+  putLike (cardId, currentUser) {
+    return fetch (`https://mesto.nomoreparties.co/v1/cohort-46/cards/${cardId}/likes`, {
         method: 'PUT',  
-        headers: this._headers
+        headers: this._headers,
+        body: JSON.stringify({
+          likes: currentUser
+        })
       })
     .then(res => this._checkResponse(res))
   }
-  deleteLike (cardId) {
-    return fetch (`${this._url}/cards/${cardId}/likes`, {
+  deleteLike (cardId, currentUser) {
+    return fetch (`https://mesto.nomoreparties.co/v1/cohort-46/cards/${cardId}/likes`, {
         method: 'DELETE',  
-        headers: this._headers
+        headers: this._headers,
+        body: JSON.stringify({
+          likes: currentUser
+        })
       })
     .then(res => this._checkResponse(res))
   }

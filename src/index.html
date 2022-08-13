@@ -39,7 +39,7 @@
           <form class="popup__edit-profile popup__form" name="edit-profile" novalidate>
             <input id = "item-name" value="not" class="popup__item item-name" type="text" name="name" placeholder="Имя" required minlength="2" maxlength="40">
             <span class="popup__error item-name-error"></span>
-            <input id = "item-subline" value="not" class="popup__item item-subline" type="text" name="subline" placeholder="О себе" required minlength="2" maxlength="200">
+            <input id = "item-subline" value="not" class="popup__item item-subline" type="text" name="about" placeholder="О себе" required minlength="2" maxlength="200">
             <span class="popup__error item-subline-error"></span>
             <button class="popup__submit-button edit-author-submit-button" type="submit" value="Сохранить">Сохранить</button>
           </form>
@@ -70,8 +70,8 @@
           <button class="popup__close-button" type="button"></button>
           <h2 class="popup__title">Обновить аватар</h2>
           <form class="popup__edit-avatar popup__form" name="edit-avatar" novalidate>
-            <input id="item-avatar-url" class="popup__item item-avatar-url" type="url" name="avatarUrl" placeholder="Ссылка на аватар" required>
-            <span class="popup__error item-img-url-error"></span>
+            <input id="item-avatar-url" class="popup__item item-avatar-url" type="url" name="avatar" placeholder="Ссылка на аватар" required>
+            <span class="popup__error item-avatar-url-error"></span>
             <button disabled class="popup__submit-button edit-card-submit-button" type="submit" value="Сохранить">Сохранить</button>
           </form>
       </section>
@@ -80,7 +80,7 @@
           <button class="popup__close-button" type="button"></button>
           <h2 class="popup__title">Вы уверены?</h2>
           <form class="popup__delete-confirm popup__form" name="delete-confirm" novalidate>
-            <button disabled class="popup__submit-button delete-confirm-submit-button" type="submit" value="Да">Да</button>
+            <button class="popup__submit-button delete-confirm-submit-button" type="submit" value="Да">Да</button>
           </form>
       </section>
       <template class="element-template">
