@@ -1,4 +1,4 @@
-.profile__avatar-button{
+.profile__avatar-button {
   border: none;
   outline: none;
   border-radius: 50%;
@@ -18,11 +18,7 @@
     background-size: 26px 26px;
     z-index: 4;
     background-repeat: no-repeat;
-    background-position: center center;
-  }
-.profile__avatar-button::before {
-    content: '';
-    background-color: black;
+    background-position: center;
 }
   
 @media screen and (max-width: 560px) {
