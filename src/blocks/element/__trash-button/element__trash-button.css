@@ -11,6 +11,7 @@
   right: 20px;
   border: none;
   cursor: pointer;
+  display: none;
 }
 .element__trash-button:hover {
   opacity: 0.5;

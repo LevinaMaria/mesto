@@ -1,4 +1,3 @@
-const imageAvatar = new URL('../images/nika.jpg', import.meta.url);
 const imageButtonAdd = new URL('../images/add.svg', import.meta.url);
 const imageButtonClose = new URL('../images/CloseIcon.svg', import.meta.url);
 const imageButtonDelete = new URL('../images/Group.svg', import.meta.url);
@@ -8,7 +7,6 @@ const imageButtonDisabled = new URL('../images/like.svg', import.meta.url);
 const imageLogo = new URL('../images/logo.svg', import.meta.url);
 
 const images = [
-  {name: 'imageAvatar', link: imageAvatar},
   { name: 'imageButtonAdd', link: imageButtonAdd },
   { name: 'imageButtonClose', link: imageButtonClose },
   { name: 'imageButtonDelete', link: imageButtonDelete },
@@ -24,6 +22,7 @@ const cardsConfig = {
     title: '.element__caption',
     image: '.element__image',
     buttonLike: '.element__like-button',
+    likesCounter: '.element__like-counter',
     buttonLikeActive: 'element__like-button_active',
     buttonDelete: '.element__trash-button'
   };
@@ -44,21 +43,27 @@ const cardsConfig = {
     input: '.popup__item',
     popupEditAuthor: '.popup-edit-author',
     popupEditCard: '.popup-edit-card',
+    popupEditAvatar: '.popup-edit-avatar',
     popupViewImage: '.popup-image-view',
+    popupDeleteConfirm: '.popup-delete-confirm',
     imageView: '.popup__view-image',
     imageViewTitle: '.popup__image-title'
   }
   const profileConfig = {
     name: '.profile__author',
-    subline: '.profile__subline'
+    subline: '.profile__subline',
+    avatar: '.profile__image'
   }
   
   const formProfile = document.querySelector('.popup__edit-profile');
   const formCard = document.querySelector('.popup__edit-card');
+  const formConfirm = document.querySelector('.popup__delete-confirm');
+  const formAvatar = document.querySelector('.popup__edit-avatar');
   const page = document.querySelector('.page');
   const profile = page.querySelector('.profile');
   const buttonOpenPopupProfile = profile.querySelector('.profile__change-button');
-  const buttonOpenPopupCard = profile.querySelector('.profile__add-button'); 
+  const buttonOpenPopupCard = profile.querySelector('.profile__add-button');
+  const imageAvatar = profile.querySelector('.profile__image');
   const cards = page.querySelector('.elements');
 
   export { 
@@ -68,7 +73,10 @@ const cardsConfig = {
     profileConfig,
     formProfile,
     formCard,
+    formAvatar,
+    formConfirm,
     buttonOpenPopupProfile,
     buttonOpenPopupCard,
+    imageAvatar,
     cards
   };
