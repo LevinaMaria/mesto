@@ -70,7 +70,6 @@ const popupImage = new PopupWithImage (
 
 //renderer
 const cardList = new Section ({
-  items: [],
   renderer: (item) => {
     cardList.addItem(createCard(item));
   }
@@ -110,7 +109,7 @@ function handleAvatarSubmit () {
 function deleteCard (cardId, cardElement) {
   popupConfirm.showLoader(true, 'Удаление...');
   api.deleteCard(cardId)
-  .then(() => cardElement.remove())
+  .then(() => popupConfirm.removeItem(cardElement))
   .then(() => popupConfirm.close())
   .catch((error) => console.log(error))
   .finally(() => popupConfirm.showLoader(false))
@@ -138,23 +137,17 @@ function handleProfileSubmit (inputValues) {
   .finally(() => popupAddProfile.showLoader(false))
 }
 
-function handleLikeClick (isAnyLikesBefore, likesArr, cardId, buttonLike, buttonLikeActiveSelector, likesCounter) {
+function handleLikeClick (isLiked, cardId, updateLikes) {
   const currentUser = newUserInfo.getUserInfo();
-  if (!isAnyLikesBefore) {
+  if (!isLiked) {
     api.putLike(cardId, currentUser)
-    .then((card) => {
-      buttonLike.classList.add(buttonLikeActiveSelector);
-      likesArr.push(currentUser)
-      likesCounter.textContent = card.likes.length;
-    })
+    .then((data) => data.likes)
+    .then((likes) => updateLikes(likes))
     .catch((error) => console.log(error))
   } else {
     api.deleteLike(cardId, currentUser)
-    .then((card) => {
-      buttonLike.classList.remove(buttonLikeActiveSelector);
-      likesArr.pop(currentUser)
-      likesCounter.textContent = card.likes.length;
-    })
+    .then((data) => data.likes)
+    .then((likes) => updateLikes(likes))
     .catch ((error) => console.log(error))
   }
 }
