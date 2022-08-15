@@ -67,7 +67,7 @@ const page = document.querySelector(".page");
 const profile = page.querySelector(".profile");
 const buttonOpenPopupProfile = profile.querySelector(".profile__change-button");
 const buttonOpenPopupCard = profile.querySelector(".profile__add-button");
-const imageAvatar = profile.querySelector(".profile__image");
+const imageAvatar = profile.querySelector(".profile__avatar-container");
 const cards = page.querySelector(".elements");
 
 export {
